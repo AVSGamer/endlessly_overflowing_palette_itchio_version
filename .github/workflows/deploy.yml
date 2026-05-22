@@ -12,29 +12,28 @@ jobs:
     steps:
       - name: Checkout Source Code
         uses: actions/checkout@v4
-      
-      # need to update path to web_shell.html
+
+      # 1. Inject hidden AdSense IDs into your custom HTML shell before exporting
       - name: Inject AdSense Credentials
         run: |
-          
           sed -i "s/vsgamer57pid/${{ vars.ADSENSE_PUB_ID }}/g" path/to/your/web_shell.html
           sed -i "s/vsgamer57sid/${{ vars.ADSENSE_SLOT_ID }}/g" path/to/your/web_shell.html
 
       # 2. Automatically compile the Godot 4 game to Web/HTML5
       - name: Godot Web Export
-        uses: firebelley/godot-export@v5.3.0
+        uses: firebelley/godot-export@v7.0.0
         with:
           godot_executable_download_url: https://github.com
+          godot_export_templates_download_url: https://github.com
+          relative_project_path: ./endlessly-overflowing-palette-v-2-by-papi-res/
           export_preset_name: Web
-          # Ensures single-threaded compilation for smooth itch.io performance without SharedArrayBuffer
-          export_path: build/index.html 
 
-      # 3. Zip and push the compiled game files to Itch.io via Butler
+      # 3. Push the compiled game files to Itch.io using the working YesLayla Action
       - name: Deploy to Itch.io via Butler
-        uses: josephbmanley/butler-publish-action@v1.2.1
+        uses: yeslayla/butler-publish-itchio-action@v1.0.3
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
           CHANNEL: html5
           ITCH_GAME: endlessly-overflowing-palette-by-papire
           ITCH_USER: VSGamer57
-          PACKAGE: build/
+          PACKAGE: exports/Web/
