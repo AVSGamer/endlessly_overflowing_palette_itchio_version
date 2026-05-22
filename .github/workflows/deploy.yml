@@ -13,33 +13,29 @@ jobs:
       - name: Checkout Source Code
         uses: actions/checkout@v4
 
-      # 1. Inject hidden AdSense IDs into your custom HTML shell before exporting
-      # Ensure web_shell.html matches your file path.
       - name: Inject AdSense Credentials
         run: |
           sed -i "s/vsgamer57pid/${{ vars.ADSENSE_PUB_ID }}/g" ./endlessly-overflowing-palette-v-2-by-papi-res/web_shell.html
           sed -i "s/vsgamer57sid/${{ vars.ADSENSE_SLOT_ID }}/g" ./endlessly-overflowing-palette-v-2-by-papi-res/web_shell.html
 
-      # 2. Automatically compile the Godot 4 game to Web/HTML5 using direct GitHub Release binaries
       - name: Godot Web Export
         uses: firebelley/godot-export@v7.0.0
         with:
+          # DIRECT ASSET SERVERS: Bypasses security redirect blocks entirely
           godot_executable_download_url: https://github.com
           godot_export_templates_download_url: https://github.com
           relative_project_path: ./endlessly-overflowing-palette-v-2-by-papi-res/
           presets_to_export: Web
 
-      # 3. Download and Install Itch.io's Official Butler Utility directly onto the runner
       - name: Setup Official Butler Tool
         run: |
-          curl -L -o butler.zip https://broth.itch.zone/butler/linux-amd64/LATEST/archive/default
+          curl -L -o butler.zip https://itch.zone
           unzip butler.zip -d bin
           chmod +x bin/butler
           echo "$(pwd)/bin" >> $GITHUB_PATH
 
-      # 4. Fire the deployment using official native push rules
       - name: Push to Itch.io via Official Butler
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_CREDENTIALS }}
         run: |
-          butler push exports/Web/ vsgamer57/endlessly-overflowing-palette-by-papire:html5
+          butler push endlessly-overflowing-palette-v-2-by-papi-res/exports/Web/ vsgamer57/endlessly-overflowing-palette-by-papire:html5
