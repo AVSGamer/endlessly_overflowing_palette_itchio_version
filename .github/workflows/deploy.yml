@@ -14,6 +14,9 @@ jobs:
         uses: actions/checkout@v4
 
       # 1. Inject hidden AdSense IDs into your custom HTML shell before exporting
+      # Note: Ensure path/to/your/web_shell.html matches your actual local file path!
+      # If it's in your root folder, just use: web_shell.html
+       Pentesting AdSense IDs Injection
       - name: Inject AdSense Credentials
         run: |
           sed -i "s/vsgamer57pid/${{ vars.ADSENSE_PUB_ID }}/g" ./endlessly-overflowing-palette-v-2-by-papi-res/web_shell.html
@@ -28,12 +31,17 @@ jobs:
           relative_project_path: ./endlessly-overflowing-palette-v-2-by-papi-res/
           export_preset_name: Web
 
-      # 3. Push the compiled game files to Itch.io using the working YesLayla Action
-      - name: Deploy to Itch.io via Butler
-        uses: yeslayla/butler-publish-itchio-action@v1.0.3
+      # 3. Download and Install Itch.io's Official Butler Utility directly onto the runner
+      - name: Setup Official Butler Tool
+        run: |
+          curl -L -o butler.zip https://itch.ovh
+          unzip butler.zip -d bin
+          chmod +x bin/butler
+          echo "$(pwd)/bin" >> $GITHUB_PATH
+
+      # 4. Fire the deployment using official native push rules
+      - name: Push to Itch.io via Official Butler
         env:
-          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
-          CHANNEL: html5
-          ITCH_GAME: endlessly-overflowing-palette-by-papire
-          ITCH_USER: VSGamer57
-          PACKAGE: exports/Web/
+          BUTLER_API_KEY: ${{ secrets.BUTLER_CREDENTIALS }}
+        run: |
+          butler push exports/Web/ VSGamer57/endlessly-overflowing-palette-by-papire:html5
