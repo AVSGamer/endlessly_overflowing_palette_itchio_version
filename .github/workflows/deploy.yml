@@ -13,26 +13,23 @@ jobs:
       - name: Checkout Source Code
         uses: actions/checkout@v5
 
-      # 1. Inject hidden AdSense IDs into your custom HTML shell before exporting
-      # Note: Points directly into your subfolder directory layout to apply the keys!
       - name: Inject AdSense Credentials
         run: |
-          sed -i "s/vsgamer57pid/${{ vars.ADSENSE_PUB_ID }}/g" ./endlessly-overflowing-palette-v-2-by-papi-res/web_shell.html
-          sed -i "s/vsgamer57sid/${{ vars.ADSENSE_SLOT_ID }}/g" ./endlessly-overflowing-palette-v-2-by-papi-res/web_shell.html
+          sed -i "s/vsgamer57pid/${{ vars.ADSENSE_PUB_ID }}/g" /endlessly-overflowing-palette-v-2-by-papi-res/web_shell.html
+          sed -i "s/vsgamer57sid/${{ vars.ADSENSE_SLOT_ID }}/g" /endlessly-overflowing-palette-v-2-by-papi-res/web_shell.html
 
-      # 2. Compile Godot 4.6 using direct non-redirected file assets mirrors
       - name: Godot Web Export
         id: export
         uses: firebelley/godot-export@v7.0.0
         with:
-          # THESE SPECIFIC MULTI-LINE LINKS ARE ABSOLUTELY ESSENTIAL! DO NOT TRUNCATE THEM!
           godot_executable_download_url: https://downloads.godotengine.org/?version=4.6.2&flavor=stable&slug=linux.x86_64.zip&platform=linux.64
           godot_export_templates_download_url: https://downloads.godotengine.org/?version=4.6.2&flavor=stable&slug=export_templates.tpz&platform=templates
-          relative_project_path: ./endlessly-overflowing-palette-v-2-by-papi-res/
-          presets_to_export: Web
+          relative_project_path: /endlessly-overflowing-palette-v-2-by-papi-res/
+          cache: true
           archive_output: true
+          use_preset_export_path: true
+          presets_to_export: Web
 
-      # 3. Download and Install Itch.io's Official Butler Utility directly from the verified .ZONE mirror
       - name: Setup Official Butler Tool
         run: |
           curl -L -o butler.zip https://broth.itch.zone/butler/linux-amd64/LATEST/archive.zip
@@ -40,9 +37,8 @@ jobs:
           chmod +x bin/butler
           echo "$(pwd)/bin" >> $GITHUB_PATH
 
-      # 4. Fire the deployment using official native push rules (Ensure user and slug are LOWERCASE)
       - name: Push to Itch.io via Official Butler
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_CREDENTIALS }}
         run: |
-          butler push /home/runner/.local/share/godot/builds/Web/ vsgamer57/endlessly-overflowing-palette-by-papire:html5
+          butler push /endlessly-overflowing-palette-v-2-by-papi-res/exports/Web/ vsgamer57/endlessly-overflowing-palette-by-papire:html5
