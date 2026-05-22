@@ -16,7 +16,7 @@ jobs:
       # 1. Inject hidden AdSense IDs into your custom HTML shell before exporting
       # Note: Ensure path/to/your/web_shell.html matches your actual local file path!
       # If it's in your root folder, just use: web_shell.html
-       Pentesting AdSense IDs Injection
+      # Pentesting AdSense IDs Injection
       - name: Inject AdSense Credentials
         run: |
           sed -i "s/vsgamer57pid/${{ vars.ADSENSE_PUB_ID }}/g" ./endlessly-overflowing-palette-v-2-by-papi-res/web_shell.html
