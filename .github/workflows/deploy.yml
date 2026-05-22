@@ -15,8 +15,8 @@ jobs:
 
       - name: Inject AdSense Credentials
         run: |
-          sed -i "s/vsgamer57pid/${{ vars.ADSENSE_PUB_ID }}/g" /endlessly-overflowing-palette-v-2-by-papi-res/web_shell.html
-          sed -i "s/vsgamer57sid/${{ vars.ADSENSE_SLOT_ID }}/g" /endlessly-overflowing-palette-v-2-by-papi-res/web_shell.html
+          sed -i "s/vsgamer57pid/${{ vars.ADSENSE_PUB_ID }}/g" endlessly-overflowing-palette-v-2-by-papi-res/web_shell.html
+          sed -i "s/vsgamer57sid/${{ vars.ADSENSE_SLOT_ID }}/g" endlessly-overflowing-palette-v-2-by-papi-res/web_shell.html
 
       - name: Godot Web Export
         id: export
