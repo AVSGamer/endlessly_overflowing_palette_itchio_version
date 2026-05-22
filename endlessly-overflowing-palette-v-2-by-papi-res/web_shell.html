@@ -57,10 +57,12 @@
         </script>
     </div>
 
+    <script src="$GODOT_PROJECT_NAME.js"></script>
+
     <script>
         window.addEventListener("DOMContentLoaded", () => {
             if (typeof Engine !== 'undefined') {
-                const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","fscache":true,"gdextensionTextures":true};
+                const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"$GODOT_URL","fscache":true,"gdextensionTextures":true};
                 const engine = new Engine(GODOT_CONFIG);
                 engine.startGame();
             } else {
