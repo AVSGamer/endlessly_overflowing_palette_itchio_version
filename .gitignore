@@ -1,0 +1,35 @@
+# Godot 4+ specific ignores
+.godot/
+*.uid
+
+# Node/Phaser/Build remnants (if you end up mixing pipelines)
+dist/
+build/
+node_modules/
+npm-debug.log*
+
+# Mobile and Desktop export binaries
+*.apk
+*.aab
+*.exe
+*.zip
+*.dmg
+*.app
+*.pck
+
+# Shared build artifacts
+bin/
+gen/
+
+# OS-specific hidden files
+.DS_Store
+Thumbs.db
+
+# Text editor / IDE configurations
+.VSCode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.csproj
