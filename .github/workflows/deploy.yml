@@ -14,9 +14,6 @@ jobs:
         uses: actions/checkout@v4
 
       # 1. Inject hidden AdSense IDs into your custom HTML shell before exporting
-      # Note: Ensure path/to/your/web_shell.html matches your actual local file path!
-      # If it's in your root folder, just use: web_shell.html
-      # Pentesting AdSense IDs Injection
       - name: Inject AdSense Credentials
         run: |
           sed -i "s/vsgamer57pid/${{ vars.ADSENSE_PUB_ID }}/g" ./endlessly-overflowing-palette-v-2-by-papi-res/web_shell.html
@@ -26,10 +23,12 @@ jobs:
       - name: Godot Web Export
         uses: firebelley/godot-export@v7.0.0
         with:
-          godot_executable_download_url: https://github.com
-          godot_export_templates_download_url: https://github.com
+          # FIXED URLS: Points explicitly to the exact raw storage binary distributions
+          godot_executable_download_url: https://tuxfamily.org
+          godot_export_templates_download_url: https://tuxfamily.org
           relative_project_path: ./endlessly-overflowing-palette-v-2-by-papi-res/
-          export_preset_name: Web
+          # FIXED PARAMETER: Uses modern comma-separated targets definition rule
+          presets_to_export: Web
 
       # 3. Download and Install Itch.io's Official Butler Utility directly onto the runner
       - name: Setup Official Butler Tool
