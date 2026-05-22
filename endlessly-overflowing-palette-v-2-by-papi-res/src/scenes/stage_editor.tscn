@@ -1,0 +1,166 @@
+[gd_scene format=3 uid="uid://dmq2tjwhp73qh"]
+
+[ext_resource type="Script" uid="uid://d4lp3jqxj8uje" path="res://src/scenes/stage_editor.gd" id="1_ovn6a"]
+[ext_resource type="Script" uid="uid://cfyj1rbcwlvbi" path="res://src/scenes/gcont_edit_colors.gd" id="1_ybuvb"]
+
+[node name="StageEditor" type="Control" unique_id=1173491583]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ovn6a")
+
+[node name="EditorWorkspace" type="Node2D" parent="." unique_id=814037512]
+
+[node name="GridAnchor" type="Marker2D" parent="EditorWorkspace" unique_id=2049759073]
+
+[node name="EditorUI" type="CanvasLayer" parent="." unique_id=1772150401]
+
+[node name="TopBar" type="MarginContainer" parent="EditorUI" unique_id=1684510216]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 170
+
+[node name="ColorRect" type="ColorRect" parent="EditorUI/TopBar" unique_id=314880679]
+layout_mode = 2
+color = Color(0.019607844, 0.2, 0.28627452, 0.6431373)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EditorUI/TopBar" unique_id=1916966664]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="btn_backToMenu" type="Button" parent="EditorUI/TopBar/HBoxContainer" unique_id=1058277415]
+layout_mode = 2
+text = "Back to Main Menu"
+
+[node name="lbl_Dimensions" type="Label" parent="EditorUI/TopBar/HBoxContainer" unique_id=329802892]
+layout_mode = 2
+text = "Specify Stage Size: "
+
+[node name="btn_incH" type="Button" parent="EditorUI/TopBar/HBoxContainer" unique_id=466939526]
+layout_mode = 2
+text = "+Height"
+
+[node name="btn_decH" type="Button" parent="EditorUI/TopBar/HBoxContainer" unique_id=1903460375]
+layout_mode = 2
+text = "-Height"
+
+[node name="btn_incW" type="Button" parent="EditorUI/TopBar/HBoxContainer" unique_id=423826626]
+layout_mode = 2
+text = "+Width"
+
+[node name="btn_decW" type="Button" parent="EditorUI/TopBar/HBoxContainer" unique_id=2089340194]
+layout_mode = 2
+text = "-Width"
+
+[node name="btn_savExport" type="Button" parent="EditorUI/TopBar/HBoxContainer" unique_id=1523211630]
+layout_mode = 2
+text = "Get Stage Code/Export"
+
+[node name="SidePalette" type="MarginContainer" parent="EditorUI" unique_id=915024338]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 120
+
+[node name="ColorRect" type="ColorRect" parent="EditorUI/SidePalette" unique_id=813962760]
+layout_mode = 2
+color = Color(0.018307626, 0.2017242, 0.28701574, 0.6431373)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EditorUI/SidePalette" unique_id=1947519747]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="lbl_colorSelect" type="Label" parent="EditorUI/SidePalette/VBoxContainer" unique_id=960171678]
+layout_mode = 2
+text = "Select
+Color"
+horizontal_alignment = 1
+
+[node name="gcont_edit_colors" type="GridContainer" parent="EditorUI/SidePalette/VBoxContainer" unique_id=583526647]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 2
+script = ExtResource("1_ybuvb")
+
+[node name="lbl_patternSelect" type="Label" parent="EditorUI/SidePalette/VBoxContainer" unique_id=823265153]
+layout_mode = 2
+text = "Select
+Draw
+Pattern"
+horizontal_alignment = 1
+
+[node name="btn_ptrnCross" type="Button" parent="EditorUI/SidePalette/VBoxContainer" unique_id=106973880]
+layout_mode = 2
+text = "Cross"
+
+[node name="btn_ptrnBox" type="Button" parent="EditorUI/SidePalette/VBoxContainer" unique_id=1961292620]
+layout_mode = 2
+text = "Box"
+
+[node name="btn_ptrnGrid" type="Button" parent="EditorUI/SidePalette/VBoxContainer" unique_id=165135733]
+layout_mode = 2
+text = "Grid"
+
+[node name="btn_ptrnL" type="Button" parent="EditorUI/SidePalette/VBoxContainer" unique_id=1650946275]
+layout_mode = 2
+text = "L:Rotate"
+
+[node name="btn_ptrnVert" type="Button" parent="EditorUI/SidePalette/VBoxContainer" unique_id=1716286761]
+layout_mode = 2
+text = "Vert.Line"
+
+[node name="btn_ptrnHori" type="Button" parent="EditorUI/SidePalette/VBoxContainer" unique_id=1409932045]
+layout_mode = 2
+text = "Hori.Line"
+
+[node name="lbl_ptrnDimensions" type="Label" parent="EditorUI/SidePalette/VBoxContainer" unique_id=859231090]
+layout_mode = 2
+text = "Pattern
+Size"
+horizontal_alignment = 1
+
+[node name="btn_ptDmVWidth" type="Button" parent="EditorUI/SidePalette/VBoxContainer" unique_id=553343937]
+layout_mode = 2
+text = "+Vert.Width"
+
+[node name="btn_ptDmVWidthL" type="Button" parent="EditorUI/SidePalette/VBoxContainer" unique_id=1086050020]
+layout_mode = 2
+text = "-Vert.Width"
+
+[node name="btn_ptDmHHeight" type="Button" parent="EditorUI/SidePalette/VBoxContainer" unique_id=661875918]
+layout_mode = 2
+text = "+Hori.Height"
+
+[node name="btn_ptDmHHeightL" type="Button" parent="EditorUI/SidePalette/VBoxContainer" unique_id=2035974692]
+layout_mode = 2
+text = "-Hori.Height"
+
+[node name="btn_ptDmWid" type="Button" parent="EditorUI/SidePalette/VBoxContainer" unique_id=770082715]
+layout_mode = 2
+text = "+Pattern.Width"
+
+[node name="btn_ptDmWidL" type="Button" parent="EditorUI/SidePalette/VBoxContainer" unique_id=1900363186]
+layout_mode = 2
+text = "-Pattern.Width"
+
+[node name="btn_ptDmHei" type="Button" parent="EditorUI/SidePalette/VBoxContainer" unique_id=212398043]
+layout_mode = 2
+text = "+Pattern.Height"
+
+[node name="btn_ptDmHeiL" type="Button" parent="EditorUI/SidePalette/VBoxContainer" unique_id=60093408]
+layout_mode = 2
+text = "-Pattern.Height"
+
+[connection signal="pressed" from="EditorUI/TopBar/HBoxContainer/btn_backToMenu" to="." method="_on_back_to_menu_button_pressed"]

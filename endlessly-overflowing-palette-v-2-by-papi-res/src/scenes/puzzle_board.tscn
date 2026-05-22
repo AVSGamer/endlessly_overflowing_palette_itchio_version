@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://cwg1jrhsf2kcq"]
+
+[ext_resource type="Script" uid="uid://c3qkvpj3kordp" path="res://src/scenes/puzzle_board.gd" id="1_m6di8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_paipg"]
+bg_color = Color(0.9019608, 0.2, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6di8"]
+bg_color = Color(0.9019608, 0.2, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34pve"]
+bg_color = Color(0.9019608, 0.2, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tj2cg"]
+bg_color = Color(0.2, 0.8, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fj527"]
+bg_color = Color(0.2, 0.8, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qca2j"]
+bg_color = Color(0.2, 0.8, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1be5u"]
+bg_color = Color(0.2, 0.4, 0.9019608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcpyy"]
+bg_color = Color(0.2, 0.4, 0.9019608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_usiss"]
+bg_color = Color(0.2, 0.4, 0.9019608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qh2eo"]
+bg_color = Color(0.9019608, 0.9019608, 0.09803922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7lfxb"]
+bg_color = Color(0.9019608, 0.9019608, 0.09803922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8u4ym"]
+bg_color = Color(0.9019608, 0.9019608, 0.09803922, 1)
+
+[node name="PuzzleBoard" type="Node2D" unique_id=622006268]
+script = ExtResource("1_m6di8")
+
+[node name="GridAnchor" type="Marker2D" parent="." unique_id=2078584305]
+
+[node name="BoardBackground" type="ColorRect" parent="GridAnchor" unique_id=673210080]
+z_index = -1
+z_as_relative = false
+color = Color(0.29227725, 0.1802912, 0.06622223, 1)
+
+[node name="GameplayUI" type="CanvasLayer" parent="." unique_id=256648003]
+
+[node name="TopBar" type="MarginContainer" parent="GameplayUI" unique_id=405409037]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+
+[node name="ColorRect" type="ColorRect" parent="GameplayUI/TopBar" unique_id=159402855]
+layout_mode = 2
+color = Color(0.019607844, 0.2, 0.28627452, 0.6431373)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameplayUI/TopBar" unique_id=811459253]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="btn_backToMenu" type="Button" parent="GameplayUI/TopBar/HBoxContainer" unique_id=666445629]
+layout_mode = 2
+text = "Back to Main Menu"
+
+[node name="btn_resetPuzzle" type="Button" parent="GameplayUI/TopBar/HBoxContainer" unique_id=1697695436]
+layout_mode = 2
+text = "Reset Stage"
+
+[node name="lbl_textCounters" type="Label" parent="GameplayUI/TopBar/HBoxContainer" unique_id=1216780108]
+layout_mode = 2
+text = "Remaining Moves Count: "
+
+[node name="lbl_textMoveCount" type="Label" parent="GameplayUI/TopBar/HBoxContainer" unique_id=486516006]
+layout_mode = 2
+text = "0"
+
+[node name="gcont_Colors" type="GridContainer" parent="GameplayUI/TopBar/HBoxContainer" unique_id=827717772]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+columns = 4
+
+[node name="btn_Red" type="Button" parent="GameplayUI/TopBar/HBoxContainer/gcont_Colors" unique_id=1126715360]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_paipg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_m6di8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_34pve")
+
+[node name="btn_Green" type="Button" parent="GameplayUI/TopBar/HBoxContainer/gcont_Colors" unique_id=1918059780]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_tj2cg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fj527")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qca2j")
+
+[node name="btn_Blue" type="Button" parent="GameplayUI/TopBar/HBoxContainer/gcont_Colors" unique_id=494769130]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_1be5u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xcpyy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_usiss")
+
+[node name="btn_Yellow" type="Button" parent="GameplayUI/TopBar/HBoxContainer/gcont_Colors" unique_id=1898867962]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_qh2eo")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7lfxb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8u4ym")
+
+[node name="lbl_StageMode" type="Label" parent="GameplayUI/TopBar/HBoxContainer" unique_id=1467848681]
+layout_mode = 2
+
+[connection signal="pressed" from="GameplayUI/TopBar/HBoxContainer/btn_backToMenu" to="." method="_on_back_to_menu_button_pressed"]

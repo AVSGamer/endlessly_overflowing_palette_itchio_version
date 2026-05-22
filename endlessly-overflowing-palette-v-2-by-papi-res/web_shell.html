@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Endlessly Overflowing Palette by PapiRES</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #0d0d0d;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100vh;
+            font-family: sans-serif;
+        }
+        /* The container holding your Godot game engine canvas */
+        #game-container {
+            width: 100%;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        canvas {
+            display: block;
+        }
+        /* The container reserving space at the bottom for the ad banner */
+        #ad-wrapper {
+            width: 100%;
+            height: 100px;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent placeholder match */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+    </style>
+    
+    <!-- 1. GOOGLE ADSENSE CORE SCRIPT (Uses Github Secret Variable Placeholder) -->
+    <script async src="https://googlesyndication.com" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div id="game-container">
+        <!-- Godot automatically injects the executable runtime engine canvas right here -->
+        <canvas id="canvas"></canvas>
+    </div>
+
+    <!-- 2. THE VISUAL AD CONTENT PLACEMENT BLOCK -->
+    <div id="ad-wrapper">
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:728px;height:100px"
+             data-ad-client="vsgamer57pid"
+             data-ad-slot="vsgamer57sid"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <!-- This loading token is required by the Godot export engine engine template -->
+    <script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://decnui0svnguo"]
+
+[ext_resource type="Script" uid="uid://dobe4i06hnqg" path="res://src/scenes/grid_cell.gd" id="1_kfg8m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_au3gm"]
+size = Vector2(64, 64)
+
+[node name="GridCell" type="Area2D" unique_id=272294228]
+script = ExtResource("1_kfg8m")
+
+[node name="BorderBackplate" type="ColorRect" parent="." unique_id=599766862]
+offset_right = 64.0
+offset_bottom = 64.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1529648471]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 62.0
+offset_bottom = 62.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1943256742]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_au3gm")
