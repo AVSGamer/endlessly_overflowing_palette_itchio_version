@@ -32,7 +32,7 @@ jobs:
 
       - name: Unzip Godot Web Build
         run: |
-          unzip exports/Web.zip -d exports/Web/
+          unzip /home/runner/.local/share/godot/archives/Web.zip -d exports/Web/
 
       - name: Setup Official Butler Tool
         run: |
