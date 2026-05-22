@@ -35,7 +35,7 @@ jobs:
       # 3. Download and Install Itch.io's Official Butler Utility directly from the verified .ZONE mirror
       - name: Setup Official Butler Tool
         run: |
-          curl -L -o butler.zip https://itch.zone
+          curl -L -o butler.zip https://broth.itch.zone/butler/linux-amd64/LATEST/archive.zip
           unzip butler.zip -d bin
           chmod +x bin/butler
           echo "$(pwd)/bin" >> $GITHUB_PATH
