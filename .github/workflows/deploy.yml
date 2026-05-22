@@ -27,12 +27,7 @@ jobs:
           relative_project_path: ./endlessly-overflowing-palette-v-2-by-papi-res/
           cache: true
           archive_output: true
-          use_preset_export_path: true
           presets_to_export: Web
-
-      - name: Unzip Godot Web Build
-        run: |
-          unzip /home/runner/.local/share/godot/archives/Web.zip -d exports/Web/
 
       - name: Setup Official Butler Tool
         run: |
@@ -45,4 +40,4 @@ jobs:
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_CREDENTIALS }}
         run: |
-          butler push exports/Web/ vsgamer57/endlessly-overflowing-palette-by-papire:html5
+          butler push /home/runner/.local/share/godot/builds/Web/ vsgamer57/endlessly-overflowing-palette-by-papire:html5
