@@ -45,4 +45,4 @@ jobs:
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_CREDENTIALS }}
         run: |
-          butler push ./endlessly-overflowing-palette-v-2-by-papi-res/exports/Web/ vsgamer57/endlessly-overflowing-palette-by-papire:html5
+          butler push ./exports/Web/ vsgamer57/endlessly-overflowing-palette-by-papire:html5
